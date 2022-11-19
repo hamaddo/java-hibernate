@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import ru.nstu.util.Gender?>
+<DialogPane prefWidth="300" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <VBox spacing="5.0">
+                <VBox>
+                    <Label text="Фамилия" />
+                    <TextField fx:id="surnameTextField" />
+                </VBox>
+                <VBox layoutX="30.0" layoutY="30.0">
+                    <Label text="Имя" />
+                    <TextField fx:id="nameTextField" />
+                </VBox>
+                <VBox layoutX="30.0" layoutY="72.0">
+                    <Label text="Отчество" />
+                    <TextField fx:id="patronymicTextField" />
+                </VBox>
+            </VBox>
+            <VBox layoutX="30.0" layoutY="196.0">
+                <Label text="Адрес" />
+                <TextField fx:id="addressTextField" />
+            </VBox>
+            <VBox layoutX="30.0" layoutY="258.0">
+                <Label text="Телефон" />
+                <TextField fx:id="phoneTextField" />
+            </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+             <Label text="Гендер" />
+             <ComboBox fx:id="genderCombobox" prefWidth="150.0">
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+                         <Gender fx:value="MALE"/>
+                         <Gender fx:value="FEMALE"/>
+                     </FXCollections>
+                 </items>
+             </ComboBox>
+         </VBox>
+        </VBox>
+    </content>
+
+    <ButtonType buttonData="APPLY" text="Подтвердить" />
+</DialogPane>
