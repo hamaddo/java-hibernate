@@ -2,6 +2,7 @@ package ru.nstu.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import ru.nstu.entity.Client;
@@ -13,10 +14,12 @@ import ru.nstu.ui.EmployerDialog;
 import ru.nstu.ui.TableInitializer;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
     private final ClientRepo clientRepo = ClientRepo.getInstance();
 
     private final EmployerRepo employerRepo = EmployerRepo.getInstance();
@@ -38,6 +41,8 @@ public class MainController {
     @FXML
     public TableView<Employer> employerTableView;
 
+    @FXML
+    private TabPane tabs;
 
     Stage stage;
 
@@ -63,18 +68,6 @@ public class MainController {
 
         employerTableView.setItems(FXCollections.observableList(employerList));
         employerTableView.refresh();
-    }
-
-
-    @FXML
-    private void initialize() {
-        TableInitializer.InitializeClientTable(clientTableView);
-        TableInitializer.InitializeEmployerTable(employerTableView);
-
-        employerList = employerRepo.findAll();
-        clientList = clientRepo.findAll();
-        onClientListChanged();
-        onEmployerListChanged();
     }
 
     // @section Clients
@@ -159,5 +152,20 @@ public class MainController {
         clientRepo.delete(selectedClient);
         clientList.remove(selectedClient);
         onClientListChanged();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (url.toString().contains("client")) {
+            TableInitializer.InitializeClientTable(clientTableView);
+            clientList = clientRepo.findAll();
+            onClientListChanged();
+
+        }
+        if (url.toString().contains("employer")) {
+            TableInitializer.InitializeEmployerTable(employerTableView);
+            employerList = employerRepo.findAll();
+            onEmployerListChanged();
+        }
     }
 }
