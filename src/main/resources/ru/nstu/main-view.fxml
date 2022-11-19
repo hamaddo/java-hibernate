@@ -9,12 +9,12 @@
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nstu.controllers.MainController">
     <TabPane fx:id="tabs" prefHeight="638.0" prefWidth="817.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
 
-        <Tab text="Работодатели">
-            <fx:include fx:id="employerTab" source="ui/employer-tab.fxml"/>
-        </Tab>
-
         <Tab text="Пользователи">
             <fx:include fx:id="clientsTab" source="ui/clients-tab.fxml"/>
+        </Tab>
+
+        <Tab text="Работодатели">
+            <fx:include fx:id="employerTab" source="ui/employer-tab.fxml"/>
         </Tab>
 
     </TabPane>
