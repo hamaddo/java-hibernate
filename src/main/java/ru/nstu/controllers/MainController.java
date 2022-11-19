@@ -78,11 +78,25 @@ public class MainController implements Initializable {
         }
     }
 
+    public void onEmployerSearchbarChange() {
+        if (employerSearchbarInput.getText().isEmpty()) {
+            employerList = employerRepo.findAll();
+            onEmployerListChanged();
+        }
+    }
+
     public void onFindClientByFio() {
         var fio = clientSearchbarInput.getText();
 
         clientList = clientRepo.findAllByName(fio);
         onClientListChanged();
+    }
+
+    public void onFindEmployerByName() {
+        var fio = employerSearchbarInput.getText();
+
+        employerList = employerRepo.findAllByName(fio);
+        onEmployerListChanged();
     }
 
     public void onFindClientByGender() {
@@ -91,6 +105,12 @@ public class MainController implements Initializable {
         clientList = clientRepo.findAllByGender(gender);
         onClientListChanged();
     }
+    public void onFindEmployerByOwnershipType() {
+        var ownerShipType = employerSearchbarInput.getText();
+
+        employerList = employerRepo.findAllByOLF(ownerShipType);
+        onEmployerListChanged();
+    }
 
     public void onFindClientByPhone() {
         var gender = clientSearchbarInput.getText();
@@ -98,6 +118,14 @@ public class MainController implements Initializable {
         clientList = clientRepo.findAllByPhone(gender);
         onClientListChanged();
     }
+
+    public void onFindEmployerByPhone() {
+        var gender = employerSearchbarInput.getText();
+
+        employerList = employerRepo.findAllByPhone(gender);
+        onEmployerListChanged();
+    }
+
 
     @FXML
     protected void onCreateClientButtonClick() throws IOException {
@@ -144,6 +172,23 @@ public class MainController implements Initializable {
     }
 
     @FXML
+    protected void onChangeEmployerButtonClick() throws IOException {
+        var selectedEmployer = employerTableView.getSelectionModel().getSelectedItem();
+
+        var modal = new EmployerDialog(stage, selectedEmployer);
+
+        modal.showAndWait().ifPresent(employer -> {
+            var selectedIndex = employerList.indexOf(selectedEmployer);
+
+            employerRepo.edit(employer);
+            employerList.set(selectedIndex, employer);
+            onEmployerListChanged();
+
+            modal.close();
+        });
+    }
+
+    @FXML
     protected void onDeleteClientButtonClick() {
         var selectedClient = clientTableView.getSelectionModel().getSelectedItem();
 
@@ -153,6 +198,18 @@ public class MainController implements Initializable {
         clientList.remove(selectedClient);
         onClientListChanged();
     }
+
+    @FXML
+    protected void onDeleteEmployerButtonClick() {
+        var selectedEmployer = employerTableView.getSelectionModel().getSelectedItem();
+
+        employerTableView.getSelectionModel().selectNext();
+
+        employerRepo.delete(selectedEmployer);
+        employerList.remove(selectedEmployer);
+        onEmployerListChanged();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

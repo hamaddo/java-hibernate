@@ -40,22 +40,22 @@
                 </Label>
                 <VBox spacing="30.0">
                     <VBox spacing="10.0">
-                        <TextField fx:id="employerSearchbarInput" onKeyTyped="#onClientSearchbarChange"
+                        <TextField fx:id="employerSearchbarInput" onKeyTyped="#onEmployerSearchbarChange"
                                    prefHeight="40.0"/>
                         <AnchorPane prefHeight="20.0">
-                            <Button onAction="#onFindClientByFio" alignment="CENTER" contentDisplay="CENTER"
-                                    mnemonicParsing="false" text="По ФИО" AnchorPane.bottomAnchor="0.0"
+                            <Button onAction="#onFindEmployerByName" alignment="CENTER" contentDisplay="CENTER"
+                                    mnemonicParsing="false" text="По названию компании" AnchorPane.bottomAnchor="0.0"
                                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                     AnchorPane.topAnchor="0.0"/>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="60.0" prefHeight="20.0">
-                            <Button onAction="#onFindClientByGender" alignment="CENTER"
-                                    contentDisplay="CENTER" mnemonicParsing="false" text="По гендеру"
+                            <Button onAction="#onFindEmployerByOwnershipType" alignment="CENTER"
+                                    contentDisplay="CENTER" mnemonicParsing="false" text="По организационной форме"
                                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="90.0" prefHeight="20.0">
-                            <Button onAction="#onFindClientByPhone" alignment="CENTER"
+                            <Button onAction="#onFindEmployerByPhone" alignment="CENTER"
                                     contentDisplay="CENTER" mnemonicParsing="false" text="По номеру"
                                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
@@ -69,13 +69,13 @@
                     </AnchorPane>
                     <AnchorPane layoutX="10.0" layoutY="230.0" prefHeight="40.0">
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                                onAction="#onChangeClientButtonClick" text="Изменить"
+                                onAction="#onChangeEmployerButtonClick" text="Изменить"
                                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>
                     <AnchorPane layoutX="10.0" layoutY="280.0" prefHeight="40.0">
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                                onAction="#onDeleteClientButtonClick" text="Удалить"
+                                onAction="#onDeleteEmployerButtonClick" text="Удалить"
                                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>

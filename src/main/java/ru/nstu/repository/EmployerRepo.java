@@ -23,8 +23,8 @@ public class EmployerRepo extends BaseRepo<Employer, Long> {
         return instance;
     }
 
-    public List<Employer> findAllByName(String fullName) {
-        return this.findByStringField("fullName", fullName);
+    public List<Employer> findAllByName(String name) {
+        return this.findByStringField("name", name);
     }
 
     public List<Employer> findAllByPhone(String phone) {
