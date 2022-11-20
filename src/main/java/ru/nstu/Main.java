@@ -15,7 +15,6 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
         stage.setTitle("Бюро ПТУ");
-        stage.setResizable(false);
         stage.setScene(scene);
 
         MainController mainController = fxmlLoader.getController();

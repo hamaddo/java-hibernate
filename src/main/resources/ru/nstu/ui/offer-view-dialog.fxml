@@ -16,7 +16,7 @@
         </rowConstraints>
         <TableView fx:id="offerTableView" />
         <VBox spacing="20.0" GridPane.columnIndex="1">
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="295.0" text="Предложения работадателя" textAlignment="CENTER">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="295.0" text="Предложения работодателя" textAlignment="CENTER">
                 <font>
                     <Font name="System Bold" size="18.0" />
                 </font>
