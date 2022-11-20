@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import ru.nstu.entity.Employer;
 import ru.nstu.repository.EmployerRepo;
 
@@ -97,6 +98,16 @@ public class EmployerTab implements Initializable {
             onEmployerListChanged();
 
             modal.close();
+        });
+    }
+
+    public void onViewEmployerOffers() throws IOException {
+        var selectedEmployer = employerTableView.getSelectionModel().getSelectedItem();
+
+        var requestViewDialog = new OfferViewDialog(MainController.stage, selectedEmployer);
+        requestViewDialog.setOnHiding((WindowEvent windowEvent) -> {
+            this.employerList = this.employerRepo.findAll();
+            onEmployerListChanged();
         });
     }
 

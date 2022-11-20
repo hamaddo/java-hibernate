@@ -29,7 +29,7 @@ public class Employer {
 
     private Integer registryNumber;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "employer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Offer> offers;
 
     public Employer(String name, OwnershipType ownershipType, String address, String phone, Integer registryNumber) {

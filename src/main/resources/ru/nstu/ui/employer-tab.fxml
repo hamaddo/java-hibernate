@@ -79,6 +79,14 @@
                                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>
+                    <AnchorPane layoutY="485.0" prefHeight="40.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                AnchorPane.topAnchor="485.0">
+                        <Button onAction="#onViewEmployerOffers" alignment="CENTER" contentDisplay="CENTER"
+                                mnemonicParsing="false" text="Просмотр предложений" AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                AnchorPane.topAnchor="0.0"/>
+                    </AnchorPane>
                 </VBox>
             </VBox>
         </AnchorPane>

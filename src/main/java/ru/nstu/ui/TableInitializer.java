@@ -6,6 +6,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.nstu.entity.Client;
 import ru.nstu.entity.Employer;
+import ru.nstu.entity.Offer;
 import ru.nstu.entity.Request;
 import ru.nstu.util.Gender;
 
@@ -61,6 +62,12 @@ public class TableInitializer {
         TableColumn<Employer, Gender> registryColumn = new TableColumn<>("Регистрационный номер");
         registryColumn.setCellValueFactory(new PropertyValueFactory<>("registryNumber"));
         tableView.getColumns().add(registryColumn);
+
+
+        TableColumn<Employer, Integer> offerColumn = new TableColumn<>("Кол-во предложений");
+        offerColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getOffers().size()).asObject());
+        tableView.getColumns().add(offerColumn);
+
     }
 
     public static void InitializeRequestTable(TableView<Request> requestTableView) {
@@ -68,8 +75,22 @@ public class TableInitializer {
         positionColumn.setCellValueFactory(new PropertyValueFactory<>("positionName"));
         requestTableView.getColumns().add(positionColumn);
 
-        TableColumn<Request, Gender> salaryColumn = new TableColumn<>("Зарплатные ожидания");
+        TableColumn<Request, Integer> salaryColumn = new TableColumn<>("Зарплатные ожидания");
         salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
         requestTableView.getColumns().add(salaryColumn);
+    }
+
+    public static void InitializeOfferTable(TableView<Offer> requestTableView) {
+        TableColumn<Offer, String> positionColumn = new TableColumn<>("Название позиции");
+        positionColumn.setCellValueFactory(new PropertyValueFactory<>("positionName"));
+        requestTableView.getColumns().add(positionColumn);
+
+        TableColumn<Offer, Integer> salaryColumn = new TableColumn<>("Зарплатные ожидания");
+        salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        requestTableView.getColumns().add(salaryColumn);
+
+        TableColumn<Offer, Gender> genderColumn = new TableColumn<>("Гендер");
+        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        requestTableView.getColumns().add(genderColumn);
     }
 }

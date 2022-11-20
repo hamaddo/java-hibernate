@@ -1,7 +1,6 @@
 package ru.nstu.repository;
-import ru.nstu.entity.Request;
 
-import java.util.List;
+import ru.nstu.entity.Request;
 
 
 public class RequestRepo extends BaseRepo<Request, Long> {
@@ -15,18 +14,10 @@ public class RequestRepo extends BaseRepo<Request, Long> {
 
     @Override
     protected String getTableName() {
-        return "Client";
+        return "Request";
     }
 
     public static RequestRepo getInstance() {
         return instance;
-    }
-
-    public List<Request> findAllByName(String fullName) {
-        return this.findByStringField("fullName", fullName);
-    }
-
-    public List<Request> findAllByPhone(String phone) {
-        return this.findByStringField("phone", phone);
     }
 }
