@@ -29,7 +29,7 @@ public class RequestViewDialog extends Stage {
     private TableView<Request> requestTableView;
 
     public RequestViewDialog(Window owner, Client selectedClient) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("request-dialog.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("request-view-dialog.fxml"));
         fxmlLoader.setController(this);
 
         Scene scene = new Scene(fxmlLoader.load());
@@ -69,23 +69,39 @@ public class RequestViewDialog extends Stage {
 
     @FXML
     public void onCreateRequest() throws IOException {
-        onRequestListChange();
-    }
+        var requestModify = new RequestModifyDialog(getOwner(), selectedClient);
 
-    @FXML
-    public void onEditAccount() throws IOException {
-        var selectedAccount = requestTableView.getSelectionModel().getSelectedItem();
-
-        requestRepo.edit(selectedAccount);
+        requestModify.showAndWait().ifPresent(request -> {
+            requestRepo.save(request);
+            requestList.add(request);
+        });
 
         onRequestListChange();
     }
 
     @FXML
-    public void onDeleteAccount() {
-        var selectedAccount = requestTableView.getSelectionModel().getSelectedItem();
-        requestRepo.delete(selectedAccount);
-        requestList.remove(selectedAccount);
+    public void onEditRequest() throws IOException {
+        var selectedRequest = requestTableView.getSelectionModel().getSelectedItem();
+
+        var requestModify = new RequestModifyDialog(getOwner(), selectedClient, selectedRequest);
+
+        requestModify.showAndWait().ifPresent(request -> {
+            var selectedIndex = requestList.indexOf(selectedRequest);
+
+            requestRepo.edit(request);
+            requestList.set(selectedIndex, request);
+        });
+
+        requestRepo.edit(selectedRequest);
+
+        onRequestListChange();
+    }
+
+    @FXML
+    public void onDeleteRequest() {
+        var selectedRequest = requestTableView.getSelectionModel().getSelectedItem();
+        requestRepo.delete(selectedRequest);
+        requestList.remove(selectedRequest);
         onRequestListChange();
     }
 }

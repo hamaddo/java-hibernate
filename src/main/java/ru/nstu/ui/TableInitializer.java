@@ -1,5 +1,6 @@
 package ru.nstu.ui;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,6 +34,11 @@ public class TableInitializer {
         TableColumn<Client, Gender> genderColumn = new TableColumn<>("Гендер");
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
         tableView.getColumns().add(genderColumn);
+
+        TableColumn<Client, Integer> requestColumn = new TableColumn<>("Кол-во заявок");
+        requestColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getRequests().size()).asObject());
+        tableView.getColumns().add(requestColumn);
+
     }
 
     public static void InitializeEmployerTable(TableView<Employer> tableView) {

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Getter
 @Setter
@@ -22,4 +23,10 @@ public class Request {
     private Client client;
 
     private Integer salary;
+
+    public Request(String positionName, Integer salary, Client client) {
+        this.positionName = positionName;
+        this.salary = salary;
+        this.client = client;
+    }
 }

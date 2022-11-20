@@ -28,12 +28,12 @@
             </AnchorPane>
             <AnchorPane layoutX="20.0" layoutY="76.0">
                 <children>
-                    <Button mnemonicParsing="false" onAction="#onEditAccount" prefHeight="40.0" text="Изменить" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <Button mnemonicParsing="false" onAction="#onEditRequest" prefHeight="40.0" text="Изменить" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                 </children>
             </AnchorPane>
             <AnchorPane layoutX="20.0" layoutY="136.0">
                 <children>
-                    <Button mnemonicParsing="false" onAction="#onDeleteAccount" prefHeight="40.0" text="Удалить" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <Button mnemonicParsing="false" onAction="#onDeleteRequest" prefHeight="40.0" text="Удалить" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                 </children>
             </AnchorPane>
             <padding>

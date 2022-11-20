@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import ru.nstu.entity.Client;
 import ru.nstu.repository.ClientRepo;
