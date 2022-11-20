@@ -29,7 +29,7 @@ public class EmployerDialog extends Dialog<Employer> {
     public ComboBox<OwnershipType> ownershipTypeComboBox;
 
     public EmployerDialog(Window owner) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employer-dialog.fxml"));
         fxmlLoader.setController(this);
 
         DialogPane dialogPane = fxmlLoader.load();

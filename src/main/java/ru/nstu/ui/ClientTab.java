@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import ru.nstu.entity.Client;
 import ru.nstu.repository.ClientRepo;
 
@@ -18,25 +19,12 @@ import java.util.ResourceBundle;
 public class ClientTab implements Initializable {
     private final ClientRepo clientRepo = ClientRepo.getInstance();
 
-    final static ClientTab instance = new ClientTab();
-
-    Stage stage;
-
     private List<Client> clientList;
     @FXML
     public TableView<Client> clientTableView;
 
     @FXML
     public TextField clientSearchbarInput;
-
-
-    public static ClientTab getInstance() {
-        return instance;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
 
 
     private void onClientListChanged() {
@@ -79,7 +67,7 @@ public class ClientTab implements Initializable {
 
     @FXML
     protected void onCreateClientButtonClick() throws IOException {
-        var modal = new ClientDialog(stage);
+        var modal = new ClientDialog(MainController.stage);
 
         modal.showAndWait().ifPresent(client -> {
             clientRepo.save(client);
@@ -94,7 +82,7 @@ public class ClientTab implements Initializable {
     protected void onChangeClientButtonClick() throws IOException {
         var selectedClient = clientTableView.getSelectionModel().getSelectedItem();
 
-        var modal = new ClientDialog(stage, selectedClient);
+        var modal = new ClientDialog(MainController.stage, selectedClient);
 
         modal.showAndWait().ifPresent(client -> {
             var selectedIndex = clientList.indexOf(selectedClient);
@@ -116,6 +104,16 @@ public class ClientTab implements Initializable {
         clientRepo.delete(selectedClient);
         clientList.remove(selectedClient);
         onClientListChanged();
+    }
+
+    public void onViewClientRequests() throws IOException {
+        var selectedClient = clientTableView.getSelectionModel().getSelectedItem();
+
+        var requestViewDialog = new RequestViewDialog(MainController.stage, selectedClient);
+        requestViewDialog.setOnHiding((WindowEvent windowEvent) -> {
+            this.clientList = this.clientRepo.findAll();
+            onClientListChanged();
+        });
     }
 
 

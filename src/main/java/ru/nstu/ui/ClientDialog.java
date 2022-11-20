@@ -32,7 +32,7 @@ public class ClientDialog extends Dialog<Client> {
     public ComboBox<Gender> genderCombobox;
 
     public ClientDialog(Window owner) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client-dialog.fxml"));
         fxmlLoader.setController(this);
 
         DialogPane dialogPane = fxmlLoader.load();

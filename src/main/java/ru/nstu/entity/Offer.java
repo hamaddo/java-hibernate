@@ -18,7 +18,7 @@ public class Offer {
 
     private String positionName;
 
-    @OneToOne()
+    @ManyToOne()
     private Employer employer;
 
     private Integer salary;

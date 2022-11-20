@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
 public class EmployerTab implements Initializable {
     private final EmployerRepo employerRepo = EmployerRepo.getInstance();
 
-    final static EmployerTab instance = new EmployerTab();
-
     @FXML
     public TextField employerSearchbarInput;
 
@@ -28,17 +26,6 @@ public class EmployerTab implements Initializable {
 
     @FXML
     public TableView<Employer> employerTableView;
-
-
-    Stage stage;
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public static EmployerTab getInstance() {
-        return instance;
-    }
 
     private void onEmployerListChanged() {
         if (employerList == null) {
@@ -84,7 +71,7 @@ public class EmployerTab implements Initializable {
 
     @FXML
     protected void onCreateEmployerButtonClick() throws IOException {
-        var modal = new EmployerDialog(stage);
+        var modal = new EmployerDialog(MainController.stage);
 
         modal.showAndWait().ifPresent(employer -> {
             employerRepo.save(employer);
@@ -100,7 +87,7 @@ public class EmployerTab implements Initializable {
     protected void onChangeEmployerButtonClick() throws IOException {
         var selectedEmployer = employerTableView.getSelectionModel().getSelectedItem();
 
-        var modal = new EmployerDialog(stage, selectedEmployer);
+        var modal = new EmployerDialog(MainController.stage, selectedEmployer);
 
         modal.showAndWait().ifPresent(employer -> {
             var selectedIndex = employerList.indexOf(selectedEmployer);

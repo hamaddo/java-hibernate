@@ -5,6 +5,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.nstu.entity.Client;
 import ru.nstu.entity.Employer;
+import ru.nstu.entity.Request;
 import ru.nstu.util.Gender;
 
 public class TableInitializer {
@@ -54,5 +55,15 @@ public class TableInitializer {
         TableColumn<Employer, Gender> registryColumn = new TableColumn<>("Регистрационный номер");
         registryColumn.setCellValueFactory(new PropertyValueFactory<>("registryNumber"));
         tableView.getColumns().add(registryColumn);
+    }
+
+    public static void InitializeRequestTable(TableView<Request> requestTableView) {
+        TableColumn<Request, String> positionColumn = new TableColumn<>("Название позиции");
+        positionColumn.setCellValueFactory(new PropertyValueFactory<>("positionName"));
+        requestTableView.getColumns().add(positionColumn);
+
+        TableColumn<Request, Gender> salaryColumn = new TableColumn<>("Зарплатные ожидания");
+        salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        requestTableView.getColumns().add(salaryColumn);
     }
 }
