@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.nstu.controllers.MainController;
+import ru.nstu.ui.MainController;
 
 import java.io.IOException;
 

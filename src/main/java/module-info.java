@@ -6,12 +6,10 @@ module ru.nstu.labwork2 {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
 
-    opens ru.nstu.controllers to javafx.fxml;
     opens ru.nstu to javafx.fxml;
     opens ru.nstu.entity to org.hibernate.orm.core, org.hibernate.commons.annotations;
 
     exports ru.nstu;
-    exports ru.nstu.controllers;
     exports ru.nstu.entity;
     exports ru.nstu.repository;
     exports ru.nstu.ui;
