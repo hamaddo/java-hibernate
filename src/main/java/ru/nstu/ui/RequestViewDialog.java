@@ -39,7 +39,7 @@ public class RequestViewDialog extends Stage {
 
         this.selectedClient = selectedClient;
 
-        setTitle("Просмотр счетов");
+        setTitle("Просмотр заявок");
         setResizable(false);
         setScene(scene);
 

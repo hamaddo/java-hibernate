@@ -38,7 +38,7 @@ public class OfferViewDialog extends Stage {
 
         this.selectedEmployer = selectedClient;
 
-        setTitle("Просмотр счетов");
+        setTitle("Просмотр предложений");
         setResizable(false);
         setScene(scene);
 
