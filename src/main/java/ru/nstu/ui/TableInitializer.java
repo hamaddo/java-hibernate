@@ -37,7 +37,7 @@ public class TableInitializer {
         tableView.getColumns().add(genderColumn);
 
         TableColumn<Client, Integer> requestColumn = new TableColumn<>("Кол-во заявок");
-        requestColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getRequests().size()).asObject());
+        requestColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getRequests() == null ? 0 : cellDataFeatures.getValue().getRequests().size()).asObject());
         tableView.getColumns().add(requestColumn);
 
     }
@@ -65,7 +65,7 @@ public class TableInitializer {
 
 
         TableColumn<Employer, Integer> offerColumn = new TableColumn<>("Кол-во предложений");
-        offerColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getOffers().size()).asObject());
+        offerColumn.setCellValueFactory(cellDataFeatures -> new SimpleIntegerProperty(cellDataFeatures.getValue().getOffers() == null ? 0 : cellDataFeatures.getValue().getOffers().size()).asObject());
         tableView.getColumns().add(offerColumn);
 
     }
